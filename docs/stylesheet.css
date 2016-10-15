@@ -35,7 +35,7 @@ h1 {
 	text-align: center;
 	font-weight: normal;
 	font-family: Lato;
-	font-size: 2.5em;
+	font-size: 6vh;
 }
 
 #scoreBanner {
@@ -44,9 +44,10 @@ h1 {
 	justify-content: center;
 	margin-top: .5em;
 	color: rgba(255, 255, 255, .7);
+	font-size: 3vh;
 }
 
-#scoreBanner li {
+#scoreBanner > li {
 	margin: 0 auto;
 }
 
@@ -54,7 +55,7 @@ h1 {
 	text-align: center;
 	margin: .5em .3em 0;
 	font-weight: normal;
-	font-size: 2.4em;
+	font-size: 5vh;
 }
 
 #answers {
@@ -63,6 +64,7 @@ h1 {
 	width: 90%;
 	height: 60vh;
 	flex-wrap: wrap;
+	font-size: 3vh;
 }
 
 .answer-choice {
