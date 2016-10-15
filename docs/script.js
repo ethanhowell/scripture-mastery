@@ -1,20 +1,17 @@
 var grading = false;
 
 window.onload = function() {
+	initializeQuestions();
 	bindMouseOver();
 	$('#answers').on('click', '.answer-choice.unselected', answerClicked);
 }
 
-function bindMouseOver() {
-	$('#answers').on('mouseenter', '.answer-choice', function() {
-		if (!grading)
-			$(this).addClass('mouse-hovering');
-	});
+function loadNextQuestion() {
+	//TODO: Function Body
+}
 
-	$('#answers').on('mouseleave', '.answer-choice', function() {
-		if (!grading)
-			$(this).removeClass('mouse-hovering');
-	});
+function initializeQuestions() {
+	//TODO: Body
 }
 
 function answerClicked() {
@@ -41,4 +38,16 @@ function grade(answer) {
 	if (answer.hasClass('correct'))
 		$('#numberCorrect').text(++correct);
 
+}
+
+function bindMouseOver() {
+	$('#answers').on('mouseenter', '.answer-choice', function() {
+		if (!grading)
+			$(this).addClass('mouse-hovering');
+	});
+
+	$('#answers').on('mouseleave', '.answer-choice', function() {
+		if (!grading)
+			$(this).removeClass('mouse-hovering');
+	});
 }
