@@ -6,17 +6,18 @@ window.onload = function() {
 }
 
 function bindMouseOver() {
-	$('#answers').on('mouseover', '.answer-choice', function() {
+	$('#answers').on('mouseenter', '.answer-choice', function() {
 		$(this).addClass('mouse-hovering');
 		console.log($(this));
 	});
 
-	$('#answers').on('mouseout', '.answer-choice', function() {
+	$('#answers').on('mouseleave', '.answer-choice', function() {
 		$(this).removeClass('mouse-hovering');
 	});
 }
 
 function answerClicked() {
+	$(this).removeClass('mouse-hovering');
 	if (!grading) {
 		grading = true;
 		$(this).toggleClass('unselected');

@@ -91,14 +91,14 @@ h1 {
 	background-color: #D50000;
 }
 
-.answer-choice.unselected {
+.unselected {
 	background-color: #E0F7FA;
 	color: rgba(0, 0, 0, .87);
 	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .38);
 }
 
 .mouse-hovering {
-	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .54) !important;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .54);
 	position: relative;
 	bottom: 1px;
 }
