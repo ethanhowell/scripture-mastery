@@ -73,7 +73,7 @@ h1 {
 	margin: auto;
 	padding: 1em;
 	display: table;
-	transition: background-color .3s ease-in .05s, color .3s ease-in .05s, box-shadow .3s ease-out, bottom .3s ease-out .05s;
+	transition: background-color .15s ease-in .05s, color .15s ease-in .05s, box-shadow .15s ease-out, bottom .15s ease-out .05s;
 }
 
 .correct, .incorrect {
@@ -95,11 +95,10 @@ h1 {
 	background-color: #E0F7FA;
 	color: rgba(0, 0, 0, .87);
 	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, .38);
-	transition: background-color .3s ease-in .05s, color .3s ease-in .05s, box-shadow .3s ease-out, bottom .3s ease-out .05s;
 }
 
-.answer-choice:hover, .answer-choice:active {
-	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .54);
+.mouse-hovering {
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .54) !important;
 	position: relative;
 	bottom: 1px;
 }
