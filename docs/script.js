@@ -7,12 +7,13 @@ window.onload = function() {
 
 function bindMouseOver() {
 	$('#answers').on('mouseenter', '.answer-choice', function() {
-		$(this).addClass('mouse-hovering');
-		console.log($(this));
+		if (!grading)
+			$(this).addClass('mouse-hovering');
 	});
 
 	$('#answers').on('mouseleave', '.answer-choice', function() {
-		$(this).removeClass('mouse-hovering');
+		if (!grading)
+			$(this).removeClass('mouse-hovering');
 	});
 }
 
