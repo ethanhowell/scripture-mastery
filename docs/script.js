@@ -28,7 +28,11 @@ function loadNextQuestion() {
 	usedAnswers.splice(randomUsedAnswerIndex, 1);
 	$('#question').text(quiz[indexOfAnswer].question);
 
-	var usedAnswerChoices = usedAnswers.slice();
+	var usedAnswerChoices = new Array(quiz.length);
+	for (var i = 0; i < usedAnswerChoices.length; i++) {
+		usedAnswerChoices[i] = i;
+	}
+	usedAnswerChoices.splice(indexOfAnswer, 1);
 
 	var randomAnswerChoice = Math.floor(Math.random() * 4);
 	var indexOfAnswerChoice = answerChoices[randomAnswerChoice];
@@ -38,7 +42,6 @@ function loadNextQuestion() {
 	$('#answer' + indexOfAnswerChoice).text(quiz[indexOfAnswer].solution);
 
 	while (answerChoices.length > 0) {
-		console.log(answerChoices)
 		randomAnswerChoice = Math.floor(Math.random() * answerChoices.length);
 		indexOfAnswerChoice = answerChoices[randomAnswerChoice];
 		answerChoices.splice(randomAnswerChoice, 1);
