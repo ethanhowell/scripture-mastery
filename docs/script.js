@@ -1,4 +1,4 @@
-var quiz;
+var quiz = new Array();
 var grading = false;
 var usedAnswers = new Array();
 var correctAnswer = "";
