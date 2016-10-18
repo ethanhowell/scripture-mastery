@@ -13,6 +13,13 @@
 </head>
 
 <body>
+	<script>
+		quiz = new Array(4);
+		quiz[0] = new Problem('1 Nephi 3:7', 'I will go and do');
+		quiz[1] = new Problem('2 Nephi 2:25', 'Adam fell that men might be');
+		quiz[2] = new Problem('2 Nephi 2:27', 'We are free to choose');
+		quiz[3] = new Problem('2 Nephi 9:28–29', 'Learning is good if we follow God’s counsel');
+	</script>
 	<header>
 		<div class="container">
 			<h1>Book of Mormon Mastery Quiz</h1>
@@ -25,17 +32,17 @@
 	<div class="container" id="quiz">
 		<h2 id="question">1 Nephi 3:7</h2>
 		<ul id="answers">
-			<li class="answer-choice unselected correct">
-				<p class="answer-text">I will go and do</p>
+			<li class="answer-choice unselected">
+				<p class="answer-text" id="answer0">Loading&hellip;</p>
 			</li>
-			<li class="answer-choice unselected incorrect">
-				<p class="answer-text">In the service of your God</p>
+			<li class="answer-choice unselected">
+				<p class="answer-text" id="answer1">Loading&hellip;</p>
 			</li>
-			<li class="answer-choice unselected incorrect">
-				<p class="answer-text">Adam fell</p>
+			<li class="answer-choice unselected">
+				<p class="answer-text" id="answer2">Loading&hellip;</p>
 			</li>
-			<li class="answer-choice unselected incorrect">
-				<p class="answer-text">Seek the kingdom of God</p>
+			<li class="answer-choice unselected">
+				<p class="answer-text" id="answer3">Loading&hellip;</p>
 			</li>
 		</ul>
 	</div>
