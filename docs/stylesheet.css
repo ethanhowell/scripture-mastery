@@ -107,6 +107,13 @@ h1 {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
+	/*Make it possible for text to break, see https://justmarkup.com/log/2015/07/dealing-with-long-words-in-css/*/
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
 }
 
 @media screen and (max-aspect-ratio: 1) {
