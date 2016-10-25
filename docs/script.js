@@ -17,7 +17,7 @@ window.onload = function() {
 
 function loadNextQuestion() {
 	if (usedAnswers.length == 0) {
-		alert('Quiz Complete &mdash; ' + (parseInt($('#numberCorrect').text()) / parseInt($('#numberRemaining').text())) + '% Correct');
+		alert('Quiz Complete &mdash; ' + (parseInt($('#numberCorrect').text()) / quiz.length) + '% Correct');
 	}
 	var answerChoices = new Array(4);
 	for (var i = 0; i < 4; i++) {
