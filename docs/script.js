@@ -9,6 +9,11 @@ function Problem(q, s) {
 }
 
 window.onload = function() {
+	$('#splash').on('click', '#begin_quiz_button', function(event) {
+		event.preventDefault();
+		$('#splash').hide();
+		$('#quiz').show();
+	});
 	initializeQuestions();
 	loadNextQuestion();
 	bindMouseOver();
