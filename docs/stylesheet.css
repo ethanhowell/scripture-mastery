@@ -38,6 +38,11 @@ h1 {
 	font-size: 6vh;
 }
 
+p {
+	margin: 1em;
+	text-align: center;
+}
+
 #scoreBanner {
 	display: flex;
 	overflow: auto;

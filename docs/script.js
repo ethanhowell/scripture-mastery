@@ -1,4 +1,5 @@
 var quiz = new Array();
+var missedQuestions = new Array();
 var grading = false;
 var usedAnswers = new Array();
 var correctAnswer = "";
@@ -9,29 +10,54 @@ function Problem(q, s) {
 }
 
 window.onload = function() {
-	$('#splash').on('click', '#begin_quiz_button', function(event) {
+	$('body').on('click', '#begin_quiz_button', function(event) {
 		event.preventDefault();
 		$('#splash').hide();
+		$('#results').hide();
 		$('#quiz').show();
+		beginQuiz();
 	});
+}
+
+function endQuiz() {
+	$('#quiz').hide();
+	$('#results').show();
+
+	$('#score').text('Quiz Complete -- ' + Math.round(100 * parseInt($('#numberCorrect').text()) / quiz.length) + '% Correct');
+	console.log(missedQuestions.length > 0);
+	if (missedQuestions.length > 0) {
+		console.log('hello');
+		$('#missed').show();
+		for (var i = 0; i < missedQuestions.length; i++) {
+			var missed = missedQuestions[i];
+			$('#missed').append('<p>' + missed.question + '&mdash;' + missed.solution + '</p>');
+		}
+	}
+}
+
+function beginQuiz() {
 	initializeQuestions();
 	loadNextQuestion();
 	bindMouseOver();
 	$('#answers').on('click', '.answer-choice.unselected', answerClicked);
+	$('#missed').hide();
+	$('#missed').html('<h1>Review these Questions!</h1>');
 }
 
 function loadNextQuestion() {
 	if (usedAnswers.length == 0) {
-		alert('Quiz Complete -- ' + Math.round(100 * parseInt($('#numberCorrect').text()) / quiz.length) + '% Correct');
+		endQuiz();
+		return;
 	}
-	var answerChoices = new Array(4);
-	for (var i = 0; i < 4; i++) {
+	var answerChoices = new Array(numAnswerChoices);
+	for (var i = 0; i < numAnswerChoices; i++) {
 		answerChoices[i] = i;
 	}
 	var randomUsedAnswerIndex = Math.floor(Math.random() * usedAnswers.length);
 	var indexOfAnswer = usedAnswers[randomUsedAnswerIndex];
 	usedAnswers.splice(randomUsedAnswerIndex, 1);
 	$('#question').text(quiz[indexOfAnswer].question);
+	$('#question').attr('array-pos', indexOfAnswer);
 
 	var usedAnswerChoices = new Array(quiz.length);
 	for (var i = 0; i < usedAnswerChoices.length; i++) {
@@ -39,9 +65,11 @@ function loadNextQuestion() {
 	}
 	usedAnswerChoices.splice(indexOfAnswer, 1);
 
-	var randomAnswerChoice = Math.floor(Math.random() * 4);
+	var randomAnswerChoice = Math.floor(Math.random() * numAnswerChoices);
 	var indexOfAnswerChoice = answerChoices[randomAnswerChoice];
 	answerChoices.splice(randomAnswerChoice, 1);
+
+	prepAnswerChoices();
 
 	$('#answer' + indexOfAnswerChoice).parent().addClass('correct');
 	$('#answer' + indexOfAnswerChoice).text(quiz[indexOfAnswer].solution);
@@ -56,8 +84,14 @@ function loadNextQuestion() {
 		usedAnswerChoices.splice(randomUsedAnswerIndex, 1);
 
 		$('#answer' + indexOfAnswerChoice).parent().addClass('incorrect');
+
 		$('#answer' + indexOfAnswerChoice).text(quiz[indexOfAnswer].solution);
 	}
+}
+
+function prepAnswerChoices() {
+	$('.answer-choice').removeClass('correct');
+	$('.answer-choice').removeClass('incorrect');
 }
 
 function initializeQuestions() {
@@ -68,6 +102,12 @@ function initializeQuestions() {
 	}
 	$('#numberRemaining').text(quiz.length);
 	$('#numberCorrect').text(0);
+	missedQuestions.length = 0;
+
+	numAnswerChoices = (quiz.length >= 4) ? 4 : quiz.length;
+	var hideOthers = numAnswerChoices;
+	while (hideOthers < 4)
+		$('#answer' + (hideOthers++)).parent().hide();
 }
 
 function answerClicked() {
@@ -93,6 +133,9 @@ function grade(answer) {
 	var correct = $('#numberCorrect').text();
 	if (answer.hasClass('correct'))
 		$('#numberCorrect').text(++correct);
+	else {
+		missedQuestions.push(quiz[$('#question').attr('array-pos')]);
+	}
 
 }
 
