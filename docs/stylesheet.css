@@ -127,11 +127,21 @@ p {
 	font: 1.5rem "Open Sans";
 	margin: 0 auto;
 	display: block;
-	margin-top: 20%;
+	margin-top: 25px;
 	background-color: #0abb38;
 	border-radius: 10px;
 	border: 0;
 	color: white;
+}
+
+#questions-to-review {
+    padding: 0.2em;
+    margin: 1.7em 7% 0;
+    overflow-y: auto;
+    max-height: 35vh;
+    background-color: #E0F7FA;
+    color: rgba(0, 0, 0, .87);
+    border-radius: 3%;
 }
 
 @media screen and (max-aspect-ratio: 1) {

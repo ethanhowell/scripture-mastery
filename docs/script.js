@@ -30,7 +30,7 @@ function endQuiz() {
 		$('#missed').show();
 		for (var i = 0; i < missedQuestions.length; i++) {
 			var missed = missedQuestions[i];
-			$('#missed').append('<p>' + missed.question + '&mdash;' + missed.solution + '</p>');
+			$('#questions-to-review').append('<p>' + missed.question + '&mdash;' + missed.solution + '</p>');
 		}
 	}
 }
@@ -41,7 +41,7 @@ function beginQuiz() {
 	bindMouseOver();
 	$('#answers').on('click', '.answer-choice.unselected', answerClicked);
 	$('#missed').hide();
-	$('#missed').html('<h1>Review these Questions!</h1>');
+	$('#questions-to-review').html('');
 }
 
 function loadNextQuestion() {
